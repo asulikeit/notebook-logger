@@ -3,7 +3,7 @@ logging for jupyternotebook
   
   
 ## Version
-    0.1.0
+    0.1.1
 
 ## Installation
     pip install notebook-logger
@@ -11,6 +11,7 @@ logging for jupyternotebook
 ## How to
     from notebook_logger import SimpleLogger
 
-    logger = SimpleLogger()
-    logger.log('Hello')
+    logger = SimpleLogger('test.log', print=False)
+    logger.log('Only log file')
+    logger.log('Both console and file', print=True)
     

@@ -2,19 +2,20 @@ import logging
 
 class SimpleLogger:
 
-    def __init__(self):
+    def __init__(self, filepath='notebook_msg.log', print=True):
+        self.is_print = print
         logging.basicConfig(
-            filename='notebook_msg.log',
+            filename=filepath,
             level=logging.INFO,
-            format='%(asctime)s || %(message)s',
-            datefmt='%m/%d/%Y %I:%M:%S %p',
+            format='%(asctime)s.%(msecs)03d || %(message)s',
+            datefmt='%m/%d/%Y %H:%M:%S',
         )
 
-    def set_file(self, filepath):
-        logging.basicConfig(filename=filepath)
+    def set_print(self, print=True):
+        self.is_print = print
 
-    def log(self, message, only_file=False):
-        if not only_file:
+    def log(self, message, print=True):
+        if print or self.is_print:
             print(message)
         logging.info(message)
         
